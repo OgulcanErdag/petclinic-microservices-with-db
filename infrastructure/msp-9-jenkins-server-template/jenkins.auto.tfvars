@@ -1,0 +1,8 @@
+mykey = "ogi-us-key"
+ami = "ami-01816d07b1128cd2d"
+region = "us-east-1"
+instance_type = "c7i-flex.large"
+jenkins_server_secgr = "petclinic-jenkins-server-secgr"
+jenkins-server-tag = "Jenkins Server of Petclinic"
+jenkins-profile = "petclinic-jenkins-profile-de"
+jenkins-role = "petclinic-jenkins-server-role"
