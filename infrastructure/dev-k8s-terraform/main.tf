@@ -109,7 +109,7 @@ resource "aws_instance" "kube-master" {
   }
 }
 
-resource "aws_instance" "kube-worker-1" {
+resource "aws_instance" "worker-1" {
   ami                    = var.ami-id
   instance_type          = "c7i-flex.large"
   vpc_security_group_ids = [aws_security_group.k8s-sec-gr.id]
