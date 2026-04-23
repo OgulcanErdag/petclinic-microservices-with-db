@@ -1,4 +1,3 @@
-
 ![microservices](./petclinic_banner_v2.svg)
 
 # Microservices CI/CD Pipeline
@@ -44,34 +43,34 @@ The project is structured around **29 Milestones (MSPs)** organized into epics t
 
 ## Tech Stack
 
-| Category | Tools |
-|---|---|
-| **Application** | Spring Boot, Spring Cloud Netflix (Eureka, Zuul, Hystrix) |
-| **Build** | Maven Wrapper, Docker, Docker Compose |
-| **CI/CD Server** | Jenkins on AWS EC2 |
-| **Container Registry** | AWS ECR, Nexus Repository |
-| **Infrastructure as Code** | Terraform |
-| **Kubernetes** | AWS EKS (eksctl), RKE (High Availability), Rancher |
-| **QA Automation** | Selenium, JUnit, JaCoCo (Code Coverage) |
-| **Monitoring** | Prometheus, Grafana, Micrometer, Zipkin (Tracing) |
-| **DNS & TLS** | AWS Route 53, cert-manager, Let's Encrypt |
+| Category                   | Tools                                                     |
+| -------------------------- | --------------------------------------------------------- |
+| **Application**            | Spring Boot, Spring Cloud Netflix (Eureka, Zuul, Hystrix) |
+| **Build**                  | Maven Wrapper, Docker, Docker Compose                     |
+| **CI/CD Server**           | Jenkins on AWS EC2                                        |
+| **Container Registry**     | AWS ECR, Nexus Repository                                 |
+| **Infrastructure as Code** | Terraform                                                 |
+| **Kubernetes**             | AWS EKS (eksctl), RKE (High Availability), Rancher        |
+| **QA Automation**          | Selenium, JUnit, JaCoCo (Code Coverage)                   |
+| **Monitoring**             | Prometheus, Grafana, Micrometer, Zipkin (Tracing)         |
+| **DNS & TLS**              | AWS Route 53, cert-manager, Let's Encrypt                 |
 
 ---
 
 ## Project Structure — MSP Overview
 
-| Epic | MSPs | Description |
-|---|---|---|
-| Local Development Environment | MSP-1 → MSP-5 | EC2 dev server, GitHub setup, Maven build, Terraform |
-| Local Development Build | MSP-6 → MSP-8 | Dockerfiles, Docker Compose, image build scripts |
-| CI Server Setup | MSP-9 → MSP-12 | Jenkins server, configuration, CI pipeline |
-| Testing Environment | MSP-11 → MSP-13 | Unit tests, code coverage (JaCoCo), Selenium |
-| Registry Setup | MSP-14 | AWS ECR Docker registry via Jenkins job |
-| QA Automation | MSP-15 → MSP-18 | Kubernetes QA environment, YAML manifests, nightly pipeline |
-| QA for Release | MSP-19 → MSP-22 | Permanent EKS QA infrastructure, weekly release pipeline |
-| Staging & Production | MSP-23 → MSP-27 | HA RKE cluster, Rancher, Nexus, staging & prod pipelines |
-| Domain & TLS | MSP-28 | Route 53 DNS, cert-manager, Let's Encrypt SSL |
-| Monitoring | MSP-29 | Prometheus + Grafana NodePort services on Kubernetes |
+| Epic                          | MSPs            | Description                                                 |
+| ----------------------------- | --------------- | ----------------------------------------------------------- |
+| Local Development Environment | MSP-1 → MSP-5   | EC2 dev server, GitHub setup, Maven build, Terraform        |
+| Local Development Build       | MSP-6 → MSP-8   | Dockerfiles, Docker Compose, image build scripts            |
+| CI Server Setup               | MSP-9 → MSP-12  | Jenkins server, configuration, CI pipeline                  |
+| Testing Environment           | MSP-11 → MSP-13 | Unit tests, code coverage (JaCoCo), Selenium                |
+| Registry Setup                | MSP-14          | AWS ECR Docker registry via Jenkins job                     |
+| QA Automation                 | MSP-15 → MSP-18 | Kubernetes QA environment, YAML manifests, nightly pipeline |
+| QA for Release                | MSP-19 → MSP-22 | Permanent EKS QA infrastructure, weekly release pipeline    |
+| Staging & Production          | MSP-23 → MSP-27 | HA RKE cluster, Rancher, Nexus, staging & prod pipelines    |
+| Domain & TLS                  | MSP-28          | Route 53 DNS, cert-manager, Let's Encrypt SSL               |
+| Monitoring                    | MSP-29          | Prometheus + Grafana NodePort services on Kubernetes        |
 
 ---
 
@@ -115,15 +114,15 @@ docker-compose up
 
 ### 3 — Access local services
 
-| Service | URL |
-|---|---|
-| API Gateway (Frontend) | http://localhost:8080 |
-| Eureka Discovery Server | http://localhost:8761 |
-| Config Server | http://localhost:8888 |
-| Zipkin Tracing | http://localhost:9411/zipkin/ |
-| Prometheus | http://localhost:9091 |
-| Grafana | http://localhost:3000 |
-| Spring Boot Admin | http://localhost:9090 |
+| Service                 | URL                           |
+| ----------------------- | ----------------------------- |
+| API Gateway (Frontend)  | http://localhost:8080         |
+| Eureka Discovery Server | http://localhost:8761         |
+| Config Server           | http://localhost:8888         |
+| Zipkin Tracing          | http://localhost:9411/zipkin/ |
+| Prometheus              | http://localhost:9091         |
+| Grafana                 | http://localhost:3000         |
+| Spring Boot Admin       | http://localhost:9090         |
 
 ---
 
@@ -145,10 +144,10 @@ Three Jenkins pipelines cover the full delivery lifecycle:
 
 Prometheus and Grafana are deployed on the Kubernetes cluster and exposed via NodePort services:
 
-| Service | NodePort |
-|---|---|
-| Prometheus | 30002 |
-| Grafana | 30003 |
+| Service    | NodePort |
+| ---------- | -------- |
+| Prometheus | 30002    |
+| Grafana    | 30003    |
 
 The Spring Petclinic services are instrumented with [Micrometer](https://micrometer.io/) and expose custom metrics via `@Timed` annotations:
 
@@ -205,11 +204,6 @@ petclinic-microservices-with-db/
 ```
 
 ---
-
-## Author
-
-**Ogulcan Erdag**
-DevOps & Cloud Engineer
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-ogulcan--erdag.com-0D1117?style=flat&logo=vercel&logoColor=white)](https://ogulcan-erdag.com)
 [![GitHub](https://img.shields.io/badge/GitHub-OgulcanErdag-181717?style=flat&logo=github&logoColor=white)](https://github.com/OgulcanErdag)
