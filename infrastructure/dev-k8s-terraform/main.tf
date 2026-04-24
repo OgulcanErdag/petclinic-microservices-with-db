@@ -10,12 +10,23 @@ variable "subnet-id" {
   default = "subnet-0e49438e1ae81df50"
 }
 
-variable "ami-id" {
-  default = "ami-005fc0f236362e99f"
-}
-
 data "aws_vpc" "name" {
   default = true
+}
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+  owners      = ["099720109477"]
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
 }
 
 resource "aws_security_group" "k8s-sec-gr" {
@@ -93,7 +104,7 @@ resource "aws_iam_instance_profile" "petclinic-master-server-profile" {
 }
 
 resource "aws_instance" "kube-master" {
-  ami                    = var.ami-id
+  ami                    = data.aws_ami.ubuntu.id
   instance_type          = "c7i-flex.large"
   iam_instance_profile   = aws_iam_instance_profile.petclinic-master-server-profile.name
   vpc_security_group_ids = [aws_security_group.k8s-sec-gr.id]
@@ -110,7 +121,7 @@ resource "aws_instance" "kube-master" {
 }
 
 resource "aws_instance" "worker-1" {
-  ami                    = var.ami-id
+  ami                    = data.aws_ami.ubuntu.id
   instance_type          = "c7i-flex.large"
   vpc_security_group_ids = [aws_security_group.k8s-sec-gr.id]
   key_name               = "clarus"
@@ -126,7 +137,7 @@ resource "aws_instance" "worker-1" {
 }
 
 resource "aws_instance" "worker-2" {
-  ami                    = var.ami-id
+  ami                    = data.aws_ami.ubuntu.id
   instance_type          = "c7i-flex.large"
   vpc_security_group_ids = [aws_security_group.k8s-sec-gr.id]
   key_name               = "clarus"
