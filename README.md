@@ -27,16 +27,16 @@ The project is structured around **29 Milestones (MSPs)** organized into epics t
 
 ## Pipeline Architecture
 
-```
-┌──────────┐    ┌───────────────┐    ┌──────────┐    ┌─────────────┐    ┌────────────┐    ┌───────────┐
-│  CODE    │───▶│  BUILD & TEST │───▶│ REGISTRY │───▶│ QA/STAGING  │───▶│ PRODUCTION │───▶│  MONITOR  │
-│          │    │               │    │          │    │             │    │            │    │           │
-│ Git      │    │ Jenkins       │    │ AWS ECR  │    │ EKS Cluster │    │ RKE + K8s  │    │Prometheus │
-│ Maven    │    │ Docker        │    │ Nexus    │    │ Selenium    │    │ Rancher    │    │ Grafana   │
-└──────────┘    └───────────────┘    └──────────┘    └─────────────┘    └────────────┘    └───────────┘
-     │                 │                   │                 │                  │
-  feature/*          dev/*            release/*          release/*           main/*
-  bugfix/*                                              (nightly)            (weekly)
+```text
+┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+│    CODE     │->│ BUILD & TEST│->│  REGISTRY   │->│ QA/STAGING  │->│ PRODUCTION  │->│   MONITOR   │
+│             │  │             │  │             │  │             │  │             │  │             │
+│     Git     │  │   Jenkins   │  │   AWS ECR   │  │ EKS Cluster │  │  RKE + K8s  │  │ Prometheus  │
+│    Maven    │  │   Docker    │  │    Nexus    │  │  Selenium   │  │   Rancher   │  │   Grafana   │
+└─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘
+
+   feature/*         dev/*          release/*        release/*         main/*
+   bugfix/*                                          (nightly)        (weekly)
 ```
 
 ---
